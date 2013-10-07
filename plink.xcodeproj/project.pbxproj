@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D463A651800D26D00356929 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A641800D26D00356929 /* Foundation.framework */; };
+		3D463A671800D26D00356929 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A661800D26D00356929 /* CoreGraphics.framework */; };
+		3D463A691800D26D00356929 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A681800D26D00356929 /* UIKit.framework */; };
+		3D463A6F1800D26D00356929 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D463A6D1800D26D00356929 /* InfoPlist.strings */; };
+		3D463A711800D26D00356929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463A701800D26D00356929 /* main.m */; };
+		3D463A751800D26D00356929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463A741800D26D00356929 /* AppDelegate.m */; };
+		3D463A771800D26E00356929 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D463A761800D26E00356929 /* Images.xcassets */; };
+		3D463A7E1800D26E00356929 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A7D1800D26E00356929 /* XCTest.framework */; };
+		3D463A7F1800D26E00356929 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A641800D26D00356929 /* Foundation.framework */; };
+		3D463A801800D26E00356929 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A681800D26D00356929 /* UIKit.framework */; };
+		3D463A881800D26E00356929 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D463A861800D26E00356929 /* InfoPlist.strings */; };
+		3D463A8A1800D26E00356929 /* plinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463A891800D26E00356929 /* plinkTests.m */; };
+		3D463AB21800D48800356929 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463A951800D48800356929 /* background.png */; };
+		3D463AB31800D48800356929 /* Button-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463A961800D48800356929 /* Button-568h@2x.png */; };
+		3D463AB41800D48800356929 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463A971800D48800356929 /* Button.png */; };
+		3D463AB51800D48800356929 /* Button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463A981800D48800356929 /* Button@2x.png */; };
+		3D463AB61800D48800356929 /* ConversationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463A9A1800D48800356929 /* ConversationManager.m */; };
+		3D463AB71800D48800356929 /* DocumentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463A9C1800D48800356929 /* DocumentManager.m */; };
+		3D463AB81800D48800356929 /* FBFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463A9E1800D48800356929 /* FBFriendController.m */; };
+		3D463AB91800D48800356929 /* PlinkConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AA01800D48800356929 /* PlinkConversation.m */; };
+		3D463ABA1800D48800356929 /* PlinkConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AA21800D48800356929 /* PlinkConversationCell.m */; };
+		3D463ABB1800D48800356929 /* PlinkConversationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AA41800D48800356929 /* PlinkConversationController.m */; };
+		3D463ABC1800D48800356929 /* PlinkLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AA61800D48800356929 /* PlinkLoginController.m */; };
+		3D463ABD1800D48800356929 /* PlinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AA81800D48800356929 /* PlinkMessage.m */; };
+		3D463ABE1800D48800356929 /* PlinkMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AAA1800D48800356929 /* PlinkMessageCell.m */; };
+		3D463AC01800D48800356929 /* PlinkRoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AAD1800D48800356929 /* PlinkRoomController.m */; };
+		3D463AC11800D48800356929 /* PlinkServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AAF1800D48800356929 /* PlinkServerManager.m */; };
+		3D463AC21800D48800356929 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463AB01800D48800356929 /* splashscreen.png */; };
+		3D463AC31800D48800356929 /* splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463AB11800D48800356929 /* splashscreen@2x.png */; };
+		3D463AC61800D65200356929 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AC51800D65200356929 /* ContactManager.m */; };
+		3D62A1541800D7FE0008D7C4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D62A1531800D7FE0008D7C4 /* FacebookSDK.framework */; };
+		3D62A1571800D84A0008D7C4 /* PlinkContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D62A1561800D84A0008D7C4 /* PlinkContact.m */; };
+		3D62A15D1800DAC00008D7C4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D62A15C1800DAC00008D7C4 /* libsqlite3.dylib */; };
+		3D62A1641800DC060008D7C4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D62A1621800DC060008D7C4 /* MainStoryboard.storyboard */; };
+		3D62A1681800DD4A0008D7C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D62A1651800DD4A0008D7C4 /* Default-568h@2x.png */; };
+		3D62A1691800DD4A0008D7C4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D62A1661800DD4A0008D7C4 /* Default.png */; };
+		3D62A16A1800DD4A0008D7C4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D62A1671800DD4A0008D7C4 /* Default@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D463A811800D26E00356929 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D463A591800D26C00356929 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D463A601800D26D00356929;
+			remoteInfo = plink;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3D463A611800D26D00356929 /* plink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plink.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D463A641800D26D00356929 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3D463A661800D26D00356929 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3D463A681800D26D00356929 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3D463A6C1800D26D00356929 /* plink-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "plink-Info.plist"; sourceTree = "<group>"; };
+		3D463A6E1800D26D00356929 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3D463A701800D26D00356929 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3D463A721800D26D00356929 /* plink-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "plink-Prefix.pch"; sourceTree = "<group>"; };
+		3D463A731800D26D00356929 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3D463A741800D26D00356929 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3D463A761800D26E00356929 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3D463A7C1800D26E00356929 /* plinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = plinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D463A7D1800D26E00356929 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3D463A851800D26E00356929 /* plinkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "plinkTests-Info.plist"; sourceTree = "<group>"; };
+		3D463A871800D26E00356929 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3D463A891800D26E00356929 /* plinkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plinkTests.m; sourceTree = "<group>"; };
+		3D463A951800D48800356929 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		3D463A961800D48800356929 /* Button-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-568h@2x.png"; sourceTree = "<group>"; };
+		3D463A971800D48800356929 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		3D463A981800D48800356929 /* Button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button@2x.png"; sourceTree = "<group>"; };
+		3D463A991800D48800356929 /* ConversationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationManager.h; sourceTree = "<group>"; };
+		3D463A9A1800D48800356929 /* ConversationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationManager.m; sourceTree = "<group>"; };
+		3D463A9B1800D48800356929 /* DocumentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentManager.h; sourceTree = "<group>"; };
+		3D463A9C1800D48800356929 /* DocumentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentManager.m; sourceTree = "<group>"; };
+		3D463A9D1800D48800356929 /* FBFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendController.h; sourceTree = "<group>"; };
+		3D463A9E1800D48800356929 /* FBFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendController.m; sourceTree = "<group>"; };
+		3D463A9F1800D48800356929 /* PlinkConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkConversation.h; sourceTree = "<group>"; };
+		3D463AA01800D48800356929 /* PlinkConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkConversation.m; sourceTree = "<group>"; };
+		3D463AA11800D48800356929 /* PlinkConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkConversationCell.h; sourceTree = "<group>"; };
+		3D463AA21800D48800356929 /* PlinkConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkConversationCell.m; sourceTree = "<group>"; };
+		3D463AA31800D48800356929 /* PlinkConversationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkConversationController.h; sourceTree = "<group>"; };
+		3D463AA41800D48800356929 /* PlinkConversationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkConversationController.m; sourceTree = "<group>"; };
+		3D463AA51800D48800356929 /* PlinkLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkLoginController.h; sourceTree = "<group>"; };
+		3D463AA61800D48800356929 /* PlinkLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkLoginController.m; sourceTree = "<group>"; };
+		3D463AA71800D48800356929 /* PlinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkMessage.h; sourceTree = "<group>"; };
+		3D463AA81800D48800356929 /* PlinkMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkMessage.m; sourceTree = "<group>"; };
+		3D463AA91800D48800356929 /* PlinkMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkMessageCell.h; sourceTree = "<group>"; };
+		3D463AAA1800D48800356929 /* PlinkMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkMessageCell.m; sourceTree = "<group>"; };
+		3D463AAC1800D48800356929 /* PlinkRoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkRoomController.h; sourceTree = "<group>"; };
+		3D463AAD1800D48800356929 /* PlinkRoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkRoomController.m; sourceTree = "<group>"; };
+		3D463AAE1800D48800356929 /* PlinkServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkServerManager.h; sourceTree = "<group>"; };
+		3D463AAF1800D48800356929 /* PlinkServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkServerManager.m; sourceTree = "<group>"; };
+		3D463AB01800D48800356929 /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen.png; sourceTree = "<group>"; };
+		3D463AB11800D48800356929 /* splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@2x.png"; sourceTree = "<group>"; };
+		3D463AC41800D65200356929 /* ContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactManager.h; sourceTree = "<group>"; };
+		3D463AC51800D65200356929 /* ContactManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactManager.m; sourceTree = "<group>"; };
+		3D62A1531800D7FE0008D7C4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		3D62A1551800D84A0008D7C4 /* PlinkContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkContact.h; sourceTree = "<group>"; };
+		3D62A1561800D84A0008D7C4 /* PlinkContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkContact.m; sourceTree = "<group>"; };
+		3D62A15C1800DAC00008D7C4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		3D62A1631800DC060008D7C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		3D62A1651800DD4A0008D7C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3D62A1661800DD4A0008D7C4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3D62A1671800DD4A0008D7C4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D463A5E1800D26D00356929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D62A15D1800DAC00008D7C4 /* libsqlite3.dylib in Frameworks */,
+				3D463A671800D26D00356929 /* CoreGraphics.framework in Frameworks */,
+				3D62A1541800D7FE0008D7C4 /* FacebookSDK.framework in Frameworks */,
+				3D463A691800D26D00356929 /* UIKit.framework in Frameworks */,
+				3D463A651800D26D00356929 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D463A791800D26E00356929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D463A7E1800D26E00356929 /* XCTest.framework in Frameworks */,
+				3D463A801800D26E00356929 /* UIKit.framework in Frameworks */,
+				3D463A7F1800D26E00356929 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D463A581800D26C00356929 = {
+			isa = PBXGroup;
+			children = (
+				3D463A6A1800D26D00356929 /* plink */,
+				3D463A831800D26E00356929 /* plinkTests */,
+				3D463A631800D26D00356929 /* Frameworks */,
+				3D463A621800D26D00356929 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D463A621800D26D00356929 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D463A611800D26D00356929 /* plink.app */,
+				3D463A7C1800D26E00356929 /* plinkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D463A631800D26D00356929 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D62A15C1800DAC00008D7C4 /* libsqlite3.dylib */,
+				3D62A1531800D7FE0008D7C4 /* FacebookSDK.framework */,
+				3D463A641800D26D00356929 /* Foundation.framework */,
+				3D463A661800D26D00356929 /* CoreGraphics.framework */,
+				3D463A681800D26D00356929 /* UIKit.framework */,
+				3D463A7D1800D26E00356929 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D463A6A1800D26D00356929 /* plink */ = {
+			isa = PBXGroup;
+			children = (
+				3D62A1611800DB170008D7C4 /* Cells */,
+				3D62A1601800DB050008D7C4 /* Managers */,
+				3D62A15F1800DAF00008D7C4 /* Models */,
+				3D62A15E1800DADF0008D7C4 /* Controllers */,
+				3D463A731800D26D00356929 /* AppDelegate.h */,
+				3D463A741800D26D00356929 /* AppDelegate.m */,
+				3D62A1621800DC060008D7C4 /* MainStoryboard.storyboard */,
+				3D463A761800D26E00356929 /* Images.xcassets */,
+				3D463A6B1800D26D00356929 /* Supporting Files */,
+			);
+			path = plink;
+			sourceTree = "<group>";
+		};
+		3D463A6B1800D26D00356929 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D62A1651800DD4A0008D7C4 /* Default-568h@2x.png */,
+				3D62A1661800DD4A0008D7C4 /* Default.png */,
+				3D62A1671800DD4A0008D7C4 /* Default@2x.png */,
+				3D463AB11800D48800356929 /* splashscreen@2x.png */,
+				3D463AB01800D48800356929 /* splashscreen.png */,
+				3D463A951800D48800356929 /* background.png */,
+				3D463A961800D48800356929 /* Button-568h@2x.png */,
+				3D463A971800D48800356929 /* Button.png */,
+				3D463A981800D48800356929 /* Button@2x.png */,
+				3D463A6C1800D26D00356929 /* plink-Info.plist */,
+				3D463A6D1800D26D00356929 /* InfoPlist.strings */,
+				3D463A701800D26D00356929 /* main.m */,
+				3D463A721800D26D00356929 /* plink-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D463A831800D26E00356929 /* plinkTests */ = {
+			isa = PBXGroup;
+			children = (
+				3D463A891800D26E00356929 /* plinkTests.m */,
+				3D463A841800D26E00356929 /* Supporting Files */,
+			);
+			path = plinkTests;
+			sourceTree = "<group>";
+		};
+		3D463A841800D26E00356929 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D463A851800D26E00356929 /* plinkTests-Info.plist */,
+				3D463A861800D26E00356929 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D62A15E1800DADF0008D7C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D463A9D1800D48800356929 /* FBFriendController.h */,
+				3D463A9E1800D48800356929 /* FBFriendController.m */,
+				3D463AA31800D48800356929 /* PlinkConversationController.h */,
+				3D463AA41800D48800356929 /* PlinkConversationController.m */,
+				3D463AA51800D48800356929 /* PlinkLoginController.h */,
+				3D463AA61800D48800356929 /* PlinkLoginController.m */,
+				3D463AAC1800D48800356929 /* PlinkRoomController.h */,
+				3D463AAD1800D48800356929 /* PlinkRoomController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3D62A15F1800DAF00008D7C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3D62A1551800D84A0008D7C4 /* PlinkContact.h */,
+				3D62A1561800D84A0008D7C4 /* PlinkContact.m */,
+				3D463A9F1800D48800356929 /* PlinkConversation.h */,
+				3D463AA01800D48800356929 /* PlinkConversation.m */,
+				3D463AA71800D48800356929 /* PlinkMessage.h */,
+				3D463AA81800D48800356929 /* PlinkMessage.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3D62A1601800DB050008D7C4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3D463AC41800D65200356929 /* ContactManager.h */,
+				3D463AC51800D65200356929 /* ContactManager.m */,
+				3D463A991800D48800356929 /* ConversationManager.h */,
+				3D463A9A1800D48800356929 /* ConversationManager.m */,
+				3D463A9B1800D48800356929 /* DocumentManager.h */,
+				3D463A9C1800D48800356929 /* DocumentManager.m */,
+				3D463AAE1800D48800356929 /* PlinkServerManager.h */,
+				3D463AAF1800D48800356929 /* PlinkServerManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		3D62A1611800DB170008D7C4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3D463AA11800D48800356929 /* PlinkConversationCell.h */,
+				3D463AA21800D48800356929 /* PlinkConversationCell.m */,
+				3D463AA91800D48800356929 /* PlinkMessageCell.h */,
+				3D463AAA1800D48800356929 /* PlinkMessageCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D463A601800D26D00356929 /* plink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D463A8D1800D26E00356929 /* Build configuration list for PBXNativeTarget "plink" */;
+			buildPhases = (
+				3D463A5D1800D26D00356929 /* Sources */,
+				3D463A5E1800D26D00356929 /* Frameworks */,
+				3D463A5F1800D26D00356929 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = plink;
+			productName = plink;
+			productReference = 3D463A611800D26D00356929 /* plink.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3D463A7B1800D26E00356929 /* plinkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D463A901800D26E00356929 /* Build configuration list for PBXNativeTarget "plinkTests" */;
+			buildPhases = (
+				3D463A781800D26E00356929 /* Sources */,
+				3D463A791800D26E00356929 /* Frameworks */,
+				3D463A7A1800D26E00356929 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D463A821800D26E00356929 /* PBXTargetDependency */,
+			);
+			name = plinkTests;
+			productName = plinkTests;
+			productReference = 3D463A7C1800D26E00356929 /* plinkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D463A591800D26C00356929 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "iSkander Dev";
+				TargetAttributes = {
+					3D463A601800D26D00356929 = {
+						DevelopmentTeam = 4DR39CJHX3;
+					};
+					3D463A7B1800D26E00356929 = {
+						TestTargetID = 3D463A601800D26D00356929;
+					};
+				};
+			};
+			buildConfigurationList = 3D463A5C1800D26C00356929 /* Build configuration list for PBXProject "plink" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3D463A581800D26C00356929;
+			productRefGroup = 3D463A621800D26D00356929 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D463A601800D26D00356929 /* plink */,
+				3D463A7B1800D26E00356929 /* plinkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D463A5F1800D26D00356929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D62A16A1800DD4A0008D7C4 /* Default@2x.png in Resources */,
+				3D463AC21800D48800356929 /* splashscreen.png in Resources */,
+				3D463AC31800D48800356929 /* splashscreen@2x.png in Resources */,
+				3D463AB31800D48800356929 /* Button-568h@2x.png in Resources */,
+				3D62A1681800DD4A0008D7C4 /* Default-568h@2x.png in Resources */,
+				3D463A6F1800D26D00356929 /* InfoPlist.strings in Resources */,
+				3D463AB21800D48800356929 /* background.png in Resources */,
+				3D463A771800D26E00356929 /* Images.xcassets in Resources */,
+				3D62A1641800DC060008D7C4 /* MainStoryboard.storyboard in Resources */,
+				3D463AB41800D48800356929 /* Button.png in Resources */,
+				3D463AB51800D48800356929 /* Button@2x.png in Resources */,
+				3D62A1691800DD4A0008D7C4 /* Default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D463A7A1800D26E00356929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D463A881800D26E00356929 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D463A5D1800D26D00356929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D463ABA1800D48800356929 /* PlinkConversationCell.m in Sources */,
+				3D463A751800D26D00356929 /* AppDelegate.m in Sources */,
+				3D463AC61800D65200356929 /* ContactManager.m in Sources */,
+				3D463ABC1800D48800356929 /* PlinkLoginController.m in Sources */,
+				3D463AC01800D48800356929 /* PlinkRoomController.m in Sources */,
+				3D62A1571800D84A0008D7C4 /* PlinkContact.m in Sources */,
+				3D463AB81800D48800356929 /* FBFriendController.m in Sources */,
+				3D463ABD1800D48800356929 /* PlinkMessage.m in Sources */,
+				3D463AB61800D48800356929 /* ConversationManager.m in Sources */,
+				3D463AC11800D48800356929 /* PlinkServerManager.m in Sources */,
+				3D463AB91800D48800356929 /* PlinkConversation.m in Sources */,
+				3D463ABB1800D48800356929 /* PlinkConversationController.m in Sources */,
+				3D463ABE1800D48800356929 /* PlinkMessageCell.m in Sources */,
+				3D463AB71800D48800356929 /* DocumentManager.m in Sources */,
+				3D463A711800D26D00356929 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D463A781800D26E00356929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D463A8A1800D26E00356929 /* plinkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D463A821800D26E00356929 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D463A601800D26D00356929 /* plink */;
+			targetProxy = 3D463A811800D26E00356929 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D463A6D1800D26D00356929 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D463A6E1800D26D00356929 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3D463A861800D26E00356929 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D463A871800D26E00356929 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3D62A1621800DC060008D7C4 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D62A1631800DC060008D7C4 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D463A8B1800D26E00356929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3D463A8C1800D26E00356929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D463A8E1800D26E00356929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/iskander/projects/plink,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "plink/plink-Prefix.pch";
+				INFOPLIST_FILE = "plink/plink-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3D463A8F1800D26E00356929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/iskander/projects/plink,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "plink/plink-Prefix.pch";
+				INFOPLIST_FILE = "plink/plink-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3D463A911800D26E00356929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/plink.app/plink";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "plink/plink-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "plinkTests/plinkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3D463A921800D26E00356929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/plink.app/plink";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "plink/plink-Prefix.pch";
+				INFOPLIST_FILE = "plinkTests/plinkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D463A5C1800D26C00356929 /* Build configuration list for PBXProject "plink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D463A8B1800D26E00356929 /* Debug */,
+				3D463A8C1800D26E00356929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3D463A8D1800D26E00356929 /* Build configuration list for PBXNativeTarget "plink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D463A8E1800D26E00356929 /* Debug */,
+				3D463A8F1800D26E00356929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3D463A901800D26E00356929 /* Build configuration list for PBXNativeTarget "plinkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D463A911800D26E00356929 /* Debug */,
+				3D463A921800D26E00356929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D463A591800D26C00356929 /* Project object */;
+}
