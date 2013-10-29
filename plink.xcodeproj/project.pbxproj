@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0A72E1182043DE00CE64C2 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A72E0182043DE00CE64C2 /* ServerManager.m */; };
+		3D0A72E4182043ED00CE64C2 /* PlinkNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A72E3182043ED00CE64C2 /* PlinkNotification.m */; };
 		3D463A651800D26D00356929 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A641800D26D00356929 /* Foundation.framework */; };
 		3D463A671800D26D00356929 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A661800D26D00356929 /* CoreGraphics.framework */; };
 		3D463A691800D26D00356929 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D463A681800D26D00356929 /* UIKit.framework */; };
@@ -33,7 +35,6 @@
 		3D463ABD1800D48800356929 /* PlinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AA81800D48800356929 /* PlinkMessage.m */; };
 		3D463ABE1800D48800356929 /* PlinkMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AAA1800D48800356929 /* PlinkMessageCell.m */; };
 		3D463AC01800D48800356929 /* PlinkRoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AAD1800D48800356929 /* PlinkRoomController.m */; };
-		3D463AC11800D48800356929 /* PlinkServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AAF1800D48800356929 /* PlinkServerManager.m */; };
 		3D463AC21800D48800356929 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463AB01800D48800356929 /* splashscreen.png */; };
 		3D463AC31800D48800356929 /* splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D463AB11800D48800356929 /* splashscreen@2x.png */; };
 		3D463AC61800D65200356929 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D463AC51800D65200356929 /* ContactManager.m */; };
@@ -57,6 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0A72DF182043DE00CE64C2 /* ServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerManager.h; sourceTree = "<group>"; };
+		3D0A72E0182043DE00CE64C2 /* ServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerManager.m; sourceTree = "<group>"; };
+		3D0A72E2182043ED00CE64C2 /* PlinkNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkNotification.h; sourceTree = "<group>"; };
+		3D0A72E3182043ED00CE64C2 /* PlinkNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkNotification.m; sourceTree = "<group>"; };
 		3D463A611800D26D00356929 /* plink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D463A641800D26D00356929 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3D463A661800D26D00356929 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,8 +102,6 @@
 		3D463AAA1800D48800356929 /* PlinkMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkMessageCell.m; sourceTree = "<group>"; };
 		3D463AAC1800D48800356929 /* PlinkRoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkRoomController.h; sourceTree = "<group>"; };
 		3D463AAD1800D48800356929 /* PlinkRoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkRoomController.m; sourceTree = "<group>"; };
-		3D463AAE1800D48800356929 /* PlinkServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlinkServerManager.h; sourceTree = "<group>"; };
-		3D463AAF1800D48800356929 /* PlinkServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlinkServerManager.m; sourceTree = "<group>"; };
 		3D463AB01800D48800356929 /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen.png; sourceTree = "<group>"; };
 		3D463AB11800D48800356929 /* splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@2x.png"; sourceTree = "<group>"; };
 		3D463AC41800D65200356929 /* ContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactManager.h; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 		3D62A15F1800DAF00008D7C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3D0A72E2182043ED00CE64C2 /* PlinkNotification.h */,
+				3D0A72E3182043ED00CE64C2 /* PlinkNotification.m */,
 				3D62A1551800D84A0008D7C4 /* PlinkContact.h */,
 				3D62A1561800D84A0008D7C4 /* PlinkContact.m */,
 				3D463A9F1800D48800356929 /* PlinkConversation.h */,
@@ -256,14 +261,14 @@
 		3D62A1601800DB050008D7C4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3D0A72DF182043DE00CE64C2 /* ServerManager.h */,
+				3D0A72E0182043DE00CE64C2 /* ServerManager.m */,
 				3D463AC41800D65200356929 /* ContactManager.h */,
 				3D463AC51800D65200356929 /* ContactManager.m */,
 				3D463A991800D48800356929 /* ConversationManager.h */,
 				3D463A9A1800D48800356929 /* ConversationManager.m */,
 				3D463A9B1800D48800356929 /* DocumentManager.h */,
 				3D463A9C1800D48800356929 /* DocumentManager.m */,
-				3D463AAE1800D48800356929 /* PlinkServerManager.h */,
-				3D463AAF1800D48800356929 /* PlinkServerManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -387,8 +392,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D0A72E1182043DE00CE64C2 /* ServerManager.m in Sources */,
 				3D463ABA1800D48800356929 /* PlinkConversationCell.m in Sources */,
 				3D463A751800D26D00356929 /* AppDelegate.m in Sources */,
+				3D0A72E4182043ED00CE64C2 /* PlinkNotification.m in Sources */,
 				3D463AC61800D65200356929 /* ContactManager.m in Sources */,
 				3D463ABC1800D48800356929 /* PlinkLoginController.m in Sources */,
 				3D463AC01800D48800356929 /* PlinkRoomController.m in Sources */,
@@ -396,7 +403,6 @@
 				3D463AB81800D48800356929 /* FBFriendController.m in Sources */,
 				3D463ABD1800D48800356929 /* PlinkMessage.m in Sources */,
 				3D463AB61800D48800356929 /* ConversationManager.m in Sources */,
-				3D463AC11800D48800356929 /* PlinkServerManager.m in Sources */,
 				3D463AB91800D48800356929 /* PlinkConversation.m in Sources */,
 				3D463ABB1800D48800356929 /* PlinkConversationController.m in Sources */,
 				3D463ABE1800D48800356929 /* PlinkMessageCell.m in Sources */,
