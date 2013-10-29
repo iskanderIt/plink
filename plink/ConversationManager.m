@@ -124,7 +124,7 @@ static int MESSAGE_WIDTH_FIELD = 7;
 
 - (void) addConversation:(PlinkConversation *) obj
 {
-    NSLog([NSString stringWithFormat:@"Add conversation: %@ (%@)", obj.name, obj.id]);
+    NSLog(@"Add conversation: %@ (%@)", obj.name, obj.id);
     
     sqlite3_stmt    *statement;
     const char *dbpath = [_conversationPath UTF8String];
@@ -142,18 +142,32 @@ static int MESSAGE_WIDTH_FIELD = 7;
                            -1, &statement, NULL);
         if (sqlite3_step(statement) == SQLITE_DONE)
         {
-            NSLog([NSString stringWithFormat:@"Conversation added: %@", obj]);
+            NSLog(@"Conversation added: %@", obj);
         } else {
             NSLog(@"Failed to add conversation");
-            NSLog([NSString stringWithFormat:@"%s", sqlite3_errmsg(_conversationDB) ]);
+            NSLog(@"%s", sqlite3_errmsg(_conversationDB));
         }
         sqlite3_finalize(statement);
         sqlite3_close(_conversationDB);
         
-        [self.conversations addObject:obj];
+        [[self conversations] setObject:obj forKey:obj.id];
     }
 }
-
+-(PlinkConversation*) getConversationAtIndex:(int)index
+{
+    NSEnumerator* e = [self.conversations objectEnumerator];
+    id value;
+    int i = 0;
+    while(value = [e nextObject]){
+        if(i > index)
+            return nil;
+        
+        if(index == i)
+            return value;
+        i++;
+    }
+    return nil;
+}
 - (void) addParticipant: (NSString *) conversationID participant:(NSString *) p
 {
 //    NSLog([NSString stringWithFormat:@"Add participant: %@", p]);
@@ -230,11 +244,23 @@ static int MESSAGE_WIDTH_FIELD = 7;
         }
         sqlite3_close(_participantDB);
     }else{
-        NSLog([NSString stringWithFormat:@"Error Opening DB Code: %s", sqlite3_errmsg(_participantDB)]);
+        NSLog(@"Error Opening DB Code: %s", sqlite3_errmsg(_participantDB));
     }
 }
+-(NSArray*) getConversationsAsIndexPaths
+{
+    NSMutableArray* indexs = [[NSMutableArray alloc] initWithCapacity:0];
+    NSEnumerator* e = [[self conversations] objectEnumerator];
+    id item;
+    int i = 0;
+    while(item = [e nextObject]){
+//        NSLog(@"AsIndexPath (obj, section, row) = (%@,%d,%d)", item, 0, i);
+        [indexs addObject:[NSIndexPath indexPathForRow:i++ inSection:0]];
+    }
+    return indexs;
+}
 
-- (void) addMessage: (NSString*) conversationID message:(PlinkMessage *) msg
+- (void) addMessage:(PlinkMessage *) msg
 {
 //    NSLog([NSString stringWithFormat:@"Add message: %@ %@ %@", msg.contactId, conversationID, msg.image]);
     
@@ -247,7 +273,7 @@ static int MESSAGE_WIDTH_FIELD = 7;
         
         NSString *insertSQL = [NSString stringWithFormat:
                                @"INSERT INTO MESSAGES (id, conversation, sender, image, datetime, ismine, height, width) VALUES (\"%@\",\"%@\", \"%@\", \"%@\", \"data_toset\", %d, %d, %d)",
-                               msg.id, conversationID, msg.contactId, msg.image, msg.isMine?1:0, msg.Height, msg.Width];
+                               msg.id, msg.cid, msg.contactId, msg.image, msg.isMine?1:0, msg.Height, msg.Width];
         NSLog(insertSQL);
         
         const char *insert_stmt = [insertSQL UTF8String];
@@ -270,7 +296,7 @@ static int MESSAGE_WIDTH_FIELD = 7;
 - (void) loadConversations
 {
     
-    self.conversations = [[NSMutableArray alloc] initWithCapacity:0];
+    self.conversations = [[NSMutableDictionary alloc] initWithCapacity:0];
     
     const char *dbpath = [_conversationPath UTF8String];
     sqlite3_stmt    *statement;
@@ -313,17 +339,19 @@ static int MESSAGE_WIDTH_FIELD = 7;
 //                
 //                NSLog([NSString stringWithFormat:@"Found Conversation( %@ ,%@, %@, %@ )",conversation.id, conversation.name, conversation.image, conversation.lastupdate]);
                 
-                [self.conversations addObject:conversation];
+                NSLog(@"Loading conversation (id, name, users): (%@,%@) forKey:%@",conversation.id,conversation.name,conversation.id);
+                [self.conversations setObject:conversation
+                                       forKey:conversation.id];
                 
             }
             sqlite3_finalize(statement);
         }else{
             
-            NSLog([NSString stringWithFormat:@"Error loading conversations: %s", sqlite3_errmsg(_conversationDB)]);
+            NSLog(@"Error loading conversations: %s", sqlite3_errmsg(_conversationDB));
         }
         sqlite3_close(_conversationDB);
     }else{
-        NSLog([NSString stringWithFormat:@"Error Opening DB Code: %s", sqlite3_errmsg(_conversationDB)]);
+        NSLog(@"Error Opening DB Code: %s", sqlite3_errmsg(_conversationDB));
     }
 }
 
@@ -385,11 +413,11 @@ static int MESSAGE_WIDTH_FIELD = 7;
             sqlite3_finalize(statement);
         }else{
             
-            NSLog([NSString stringWithFormat:@"Error loading messages: %s", sqlite3_errmsg(_messageDB)]);
+            NSLog(@"Error loading messages: %s", sqlite3_errmsg(_messageDB));
         }
         sqlite3_close(_messageDB);
     }else{
-        NSLog([NSString stringWithFormat:@"Error Opening DB Code: %s", sqlite3_errmsg(_conversationDB)]);
+        NSLog(@"Error Opening DB Code: %s", sqlite3_errmsg(_conversationDB));
     }
 }
 

@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "PlinkServerManager.h"
+#import "ServerManager.h"
+#import "PlinkNotification.h"
 
 @implementation AppDelegate
 
@@ -16,25 +17,62 @@
 @synthesize loginController;
 @synthesize navController;
 @synthesize conversationController;
+@synthesize notification;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-	// Let the device know we want to receive push notifications
+   	// Let the device know we want to receive push notifications
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
     // Override point for customization after application launch.
-    self.serverManager = [PlinkServerManager new];
+    self.serverManager = [ServerManager new];
     self.storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.conversationController = [storyboard instantiateViewControllerWithIdentifier:@"ConversationControllerID"];   
     self.navController = [[UINavigationController alloc]
                           initWithRootViewController:self.conversationController];
     
+    // set notification model
+    self.notification = nil;
+    if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil)
+    {
+        NSDictionary* n = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        self.notification = [PlinkNotification new];
+        self.notification.mid = [n valueForKey:@"mid"];
+        self.notification.cid = [n valueForKey:@"cid"];
+        self.notification.uid = [n valueForKey:@"uid"];
+        self.notification.img = [n valueForKey:@"img"];
+    }
+    
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
     
+    return YES;
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+{
+    NSLog(@"Received notification: %@", userInfo);
+    
+     self.notification = [PlinkNotification new];
+     self.notification.mid = [userInfo valueForKey:@"mid"];
+     self.notification.cid = [userInfo valueForKey:@"cid"];
+     self.notification.uid = [userInfo valueForKey:@"uid"];
+     self.notification.img = [userInfo valueForKey:@"img"];
+    
+//    [[self conversationController] syncConversationAndMessages:last];
+//    NSLog(@"Received notification: %@", remote);
+    
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"devToken=%@",deviceToken);
+
+    self.deviceID = deviceToken;
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         // Yes, so just open the session (this won't display any UX).
         [self openSession];
@@ -43,9 +81,12 @@
         [self showLoginView:NO];
     }
     
-    return YES;
 }
-							
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    NSLog(@"Error in registration. Error: %@", err);
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -71,6 +112,24 @@
     // (e.g., returning from iOS 6.0 Login Dialog or from fast app switching).
     NSLog(@"App - BecomeActive");
     [FBSession.activeSession handleDidBecomeActive];
+    // quanto tappo su una notifica ricevo il payload della notifica, poi viene lanciato becomeactive.
+    // Letta una notifica bsogna toglierla dal centro notifiche
+    
+    if(self.notification != nil)
+    {
+        //
+//        if([[self.navController topViewController] isKindOfClass:[PlinkConversationController class]])
+//        {
+//            
+//        }else{
+//        
+//        }
+      
+        NSArray* popped = [self.navController popToRootViewControllerAnimated:YES];
+        NSLog(@"stack popped %lu",(unsigned long)[popped count] );
+        PlinkConversationController *topViewController = (PlinkConversationController *) [self.navController topViewController];
+        [topViewController setQueue:self.notification];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -115,6 +174,7 @@
                  ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *err) {
 
                      [[self serverManager] openServerChannel:[[session accessTokenData] accessToken]
+                                                withDeviceID:[self deviceID]
                                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                              if (error == nil)
                              {                               
@@ -128,7 +188,12 @@
                                      loginController = nil;
                                      
                                      NSLog(@" finish requestForMe");
-                                     [[self conversationController] viewReady];
+                                     if(self.notification != nil)
+                                     {
+                                         [[self conversationController] syncConversationAndMessages:self.notification];
+                                     }else{
+                                         [[self conversationController] syncConversation];
+                                     }
                                      
                                  } else {
                                      NSLog(@"error2: %@", err);

@@ -10,19 +10,27 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 #import "ConversationManager.h"
+#import "ServerManager.h"
 #import "FBFriendController.h"
+#import "PlinkNotification.h"
 
 
 @interface PlinkConversationController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) FBFriendController *contactManager;
+@property (nonatomic, strong) ConversationManager* cm;
+@property (nonatomic, strong) ServerManager* sm;
+
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
-@property (nonatomic,strong) ConversationManager* cm;
-@property (nonatomic) NSString* conversationID;
-@property (nonatomic,strong) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *conversations;
+@property (nonatomic, strong) PlinkNotification* queue;
 
--(void) viewDidAppear:(BOOL)animated;
--(void) viewReady;
+-(void)     addConversationInQueue:(PlinkNotification*) notification;
+-(void)     syncConversation;
+-(void)     syncConversationAndMessages:(PlinkNotification*) notification;
+-(void)     createConversation:(PlinkConversation *)obj partecipants:(NSArray *) ps;
+
+-(void)     addMessageFromRemoteNotification:(NSDictionary*) payload;
+//- (void)      addParticipants:(NSArray *) participants;
 @end

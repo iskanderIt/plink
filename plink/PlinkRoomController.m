@@ -12,7 +12,7 @@
 #import "PlinkMessageCell.h"
 #import "DocumentManager.h"
 #import "ContactManager.h"
-#import "PlinkServerManager.h"
+#import "ServerManager.h"
 #import "AppDelegate.h"
 
 
@@ -49,7 +49,6 @@ CGFloat SCREEN_WIDTH;
 
     SCREEN_WIDTH = CGRectGetWidth(self.view.bounds);
     
-    self.tabBarController.delegate = self;
     self.cm = [ConversationManager new];
     self.title = self.conversationName;
    
@@ -57,7 +56,7 @@ CGFloat SCREEN_WIDTH;
                      highlightImage:[UIImage imageNamed:@"plink.png"]
                              target:self
                              action:@selector(showActionButtonTapped:)];
-    
+
     UIColor *bg = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     [self.tableView setBackgroundColor:bg];
     
@@ -71,7 +70,7 @@ CGFloat SCREEN_WIDTH;
     [super viewDidAppear:animated];
         
     if(self.conversationId != NULL && [self.conversationId length] > 0 ){
-        NSLog([NSString stringWithFormat:@"Loading Conversation %@",self.conversationId]);
+        NSLog(@"Loading Conversation %@",self.conversationId);
         
         [self.cm loadParticipants:self.conversationId];
         [self.cm loadMessages:self.conversationId];
@@ -98,52 +97,6 @@ CGFloat SCREEN_WIDTH;
         NSLog(@"Back Pressed");
     }
     [super viewWillDisappear:animated];
-}
-
-- (void) createConversation:(PlinkConversation *)obj partecipants:(NSArray *) ps
-{
-    if(obj == nil)
-        return;
-    
-    if( ps == nil)
-        return;
-
-    if (self.cm == nil)
-    {
-        self.cm = [ConversationManager new];
-    }
-    
-    AppDelegate* app = [UIApplication sharedApplication].delegate;
-    [app.serverManager addConversation:obj withUsers:ps complationhandler:^(NSString* conversationID) {
-        obj.id = conversationID;
-        obj.image = obj.image == nil ? [ContactManager getContactImageById:[ps objectAtIndex:0]] : obj.image;
-        
-        self.conversationId = obj.id;
-        
-        [[self cm] addConversation:obj];
-        [[self cm] addParticipants:obj.id participants:ps];
-    }];
-}
-
-- (void) addParticipants:(NSArray *) participants
-{
-    if (self.cm == nil){
-        self.cm = [ConversationManager new];
-    }
-    
-    if(self.conversationId == NULL)
-    {
-        NSLog(@"Creating Conversation");
-        
-        PlinkConversation* c = [PlinkConversation new];
-        c.name = self.conversationName;
-        c.id =  CFBridgingRelease(CFUUIDCreateString(NULL,CFUUIDCreate(NULL)));
-        [self.cm addConversation:c];
-        self.conversationId = c.id; 
-    }
-    
-    NSLog([NSString stringWithFormat:@"Room Add Participants - CM:%@",[self cm]]);    
-    [[self cm] addParticipants:self.conversationId participants:participants];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -231,7 +184,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                          toConversationId:self.conversationId
                         complationhandler:^(void)
         {
-            [[self cm] addMessage:self.conversationId message:msg];
+            [[self cm] addMessage:msg];
+            
             if (_newMedia)
                 UIImageWriteToSavedPhotosAlbum([UIImage imageNamed:msg.image],
                                                self,
@@ -248,9 +202,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void) postMessage:(PlinkMessage *) msg
 {
-    [[self cm] addMessage:_conversationId message:msg];
+    [[self cm] addMessage:msg];
     
-    int count = [[self cm] getConversazionLen:_conversationId];
+    int count = [[self cm] getConversazionLen:msg.cid];
     
     NSIndexPath *last = [NSIndexPath indexPathForRow:(count -1) inSection:0];
 //    NSLog([NSString stringWithFormat:@"Section: %d Row: %d",last.section, last.row]);
@@ -262,6 +216,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
 }
 
+- (void) receivePushMessage:(PlinkMessage*) message
+{
+    if(self.cm == nil)
+        self.cm = [ConversationManager new];
+    
+    [self.cm addMessage:message];
+}
+
 - (NSString*) procImg:(UIImage *) image scaledToSize:(CGSize)newSize;
 {
 //    UIGraphicsBeginImageContextWithOptions(newSize, NO, 1);
@@ -271,7 +233,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 //    UIGraphicsEndImageContext();
     UIImage* newImage = image;
     
-    NSString* fileName = [NSString stringWithFormat:@"%d.jpeg",newImage.hash];
+    NSString* fileName = [NSString stringWithFormat:@"%lu.jpeg",(unsigned long)newImage.hash];
     NSString* imagePath = [DocumentManager filePath:fileName];
     
     NSFileManager *filemgr = [NSFileManager defaultManager];
@@ -344,19 +306,23 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
-//    NSLog([NSString stringWithFormat:@"Heights - img: %d bar: %d", buttonImage.size.height, self.tabBar.frame.size.height]);
-    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
-    if (heightDifference < 0) {
-        button.center = self.tabBar.center;
-    } else {
-        CGPoint center = self.tabBar.center;
-        center.y = center.y - heightDifference/2.0;
-        button.center = center;
-    }
+//    NSLog(@"Heights - img: %f bar: %f", buttonImage.size.height, self.tabBar.frame.size.height);
+//    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+//    
+//    if (heightDifference < 0) {
+//        button.center = self.tabBar.center;
+//    } else {
+//        CGPoint center = self.tabBar.center;
+////        center.y = center.y - heightDifference/2.0; //iOS 6_x
+//        center.y=0;
+//        button.center = center;
+////        NSLog(@"button center x:%f y:%f  barCenter:%f,%f",center.x, center.y,self.tabBar.center.x,self.tabBar.center.y);
+//    }
     
+    button.center = CGPointMake(self.tabBar.center.x,0);    
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    
     [self.tabBar addSubview:button];
+//    self.tabBar.autoresizesSubviews=NO;
     self.centerButton = button;
 }
 

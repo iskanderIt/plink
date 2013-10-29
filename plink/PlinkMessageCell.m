@@ -28,14 +28,11 @@
 
 - (void) prepareForReuse
 {
-//    [self setNeedsDisplay];
-//    [self setNeedsLayout];
+
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    NSLog(@"layoutSubviews");
-//    self.picture.frame = CGRectMake(0,0,5,5);
 }
 
 @end

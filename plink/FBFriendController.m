@@ -8,6 +8,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "FBFriendController.h"
 #import "PlinkRoomController.h"
+#import "AppDelegate.h"
 
 @implementation FBFriendController
 
@@ -77,9 +78,7 @@
 
 - (void) addConversation:(NSString *) conversationName
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    PlinkRoomController *roomController = [storyboard instantiateViewControllerWithIdentifier:@"PlinkRoomId"];
-   
+
     NSMutableArray* friends = [[NSMutableArray alloc] initWithCapacity:0];
     for(int i = 0; i < [self.selectedFriends count]; i++)
     {
@@ -90,7 +89,8 @@
     PlinkConversation* c = [PlinkConversation new];
     c.name = conversationName;
     
-    [roomController createConversation:c partecipants:friends];
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    [[appDelegate conversationController] createConversation:c partecipants:friends];
 
     [self.nav popViewControllerAnimated:YES];
 }

@@ -13,8 +13,6 @@
 
 @interface ConversationManager : NSObject
 
-@property (nonatomic, strong) UIActivityIndicatorView *loader;
-
 @property (nonatomic, strong) NSString *conversationPath;
 @property (nonatomic, strong) NSString *participantPath;
 @property (nonatomic, strong) NSString *messagePath;
@@ -23,13 +21,15 @@
 @property (nonatomic) sqlite3 *participantDB;
 @property (nonatomic) sqlite3 *messageDB;
 
-@property (nonatomic,strong) NSMutableArray* conversations;
+@property (nonatomic,strong) NSMutableDictionary* conversations;
 @property (nonatomic,strong) NSMutableArray* participants;
 @property (nonatomic,strong) NSMutableArray* messages;
 
 - (void) addConversation:(PlinkConversation *) obj;
 - (void) loadConversations;
 - (int)  getConversazionLen:(NSString *) conversationID;
+- (PlinkConversation*)  getConversationAtIndex:(int) index;
+- (NSArray*) getConversationsAsIndexPaths;
 
 - (void) addParticipant: (NSString *) conversationID participant:(NSString *) p;
 - (void) addParticipants: (NSString *) conversationID participants:(NSArray *) ps;
@@ -37,7 +37,7 @@
 - (void) loadMessages:(NSString *) conversationID;
 
 - (void) loadMessages:(NSString *) conversationID;
-- (void) addMessage: (NSString *) conversationID message:(PlinkMessage *) msg;
+- (void) addMessage:(PlinkMessage *) msg;
 - (PlinkMessage *) getMessage:(NSString *)conversationID message:(int)index;
 
 

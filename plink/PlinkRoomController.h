@@ -32,8 +32,8 @@
 - (void)      addCenterButtonWithImage:(UIImage *)buttonImage highlightImage:(UIImage *)highlightImage target:(id)target action:(SEL)action;
 
 - (void)      postMessage:(PlinkMessage *) message;
-- (void)      addParticipants:(NSArray *) participants;
-- (void)      createConversation:(PlinkConversation *)obj partecipants:(NSArray *) ps;
+- (void)      receivePushMessage:(PlinkMessage*) message;
+
 
 
 

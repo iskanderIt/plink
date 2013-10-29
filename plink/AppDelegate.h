@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PlinkConversationController.h"
 #import "PlinkLoginController.h"
-#import "PlinkServerManager.h"
+#import "ServerManager.h"
+#import "PlinkNotification.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -20,10 +21,13 @@
 @property (nonatomic, strong) PlinkConversationController *conversationController;
 @property (nonatomic, strong) UIStoryboard *storyboard;
 
-@property (nonatomic, strong) PlinkServerManager *serverManager;
+@property (nonatomic, strong) ServerManager *serverManager;
 
 @property (nonatomic, strong) NSString* identityName;
 @property (nonatomic, strong) NSString* identityId;
+@property (nonatomic)         NSData* deviceID;
+
+@property (nonatomic)         PlinkNotification* notification;
 
 - (void) openSession;
 
